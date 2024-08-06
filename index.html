@@ -4,59 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FXManifest Generator</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        #vehicleCreditsSection {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>FXManifest Generator</h1>
-    <form id="manifestForm">
-        <label for="name">Resource Name:</label>
-        <input type="text" id="name" name="name" required><br>
+    <div class="container">
+        <h1>FXManifest Generator</h1>
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+        <span id="darkModeLabel">Dark Mode</span>
 
-        <label for="version">Version:</label>
-        <input type="text" id="version" name="version" required><br>
-
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required><br>
-
-        <label for="folder">Folder Name (if scripts are in a folder):</label>
-        <input type="text" id="folder" name="folder"><br>
-
-        <label for="clientScripts">Client Scripts (comma-separated):</label>
-        <input type="text" id="clientScripts" name="clientScripts"><br>
-
-        <label for="serverScripts">Server Scripts (comma-separated):</label>
-        <input type="text" id="serverScripts" name="serverScripts"><br>
-
-        <label for="dependencies">Dependencies (comma-separated):</label>
-        <input type="text" id="dependencies" name="dependencies"><br>
-
-        <label for="isMap">Is this a map resource?</label>
-        <input type="checkbox" id="isMap" name="isMap"><br>
-
-        <label for="isVehicle">Is this a vehicle resource?</label>
-        <input type="checkbox" id="isVehicle" name="isVehicle"><br>
-
-        <div id="vehicleCreditsSection">
-            <label for="vehicleCredits">Vehicle Credits:</label>
-            <input type="text" id="vehicleCredits" name="vehicleCredits"><br>
+        <div class="tabs">
+            <button id="scriptTab" class="tab-button">Script Manifest</button>
+            <button id="vehicleTab" class="tab-button">Vehicle Manifest</button>
         </div>
 
-        <button type="submit">Generate Manifest</button>
-    </form>
+        <!-- Script Manifest Form -->
+        <div id="scriptTabContent" class="tab-content">
+            <h2>Script Manifest</h2>
+            <form id="scriptForm">
+                <label for="scriptName">Resource Name:</label>
+                <input type="text" id="scriptName" name="name" required><br>
 
-    <h2>Generated Manifest:</h2>
-    <textarea id="manifestOutput" readonly></textarea>
+                <label for="scriptDescription">Description:</label>
+                <input type="text" id="scriptDescription" name="description"><br>
 
-    <div id="downloadSection"></div>
+                <label for="scriptVersion">Version:</label>
+                <input type="text" id="scriptVersion" name="version"><br>
 
-    <script src="script.js"></script>
+                <label for="scriptAuthor">Author:</label>
+                <input type="text" id="scriptAuthor" name="author"><br>
+
+                <label for="scriptFolder">Folder Name (if scripts are in a folder):</label>
+                <input type="text" id="scriptFolder" name="folder"><br>
+
+                <label for="clientScripts">Client Scripts (comma-separated):</label>
+                <input type="text" id="clientScripts" name="clientScripts"><br>
+
+                <label for="serverScripts">Server Scripts (comma-separated):</label>
+                <input type="text" id="serverScripts" name="serverScripts"><br>
+
+                <label for="dependencies">Dependencies (comma-separated):</label>
+                <input type="text" id="dependencies" name="dependencies"><br>
+
+                <label for="isMap">Is this a map resource?</label>
+                <input type="checkbox" id="isMap" name="isMap"><br>
+
+                <button type="submit">Generate Script Manifest</button>
+                <div id="scriptErrorContainer" class="error-container"></div>
+            </form>
+        </div>
+
+        <!-- Vehicle Manifest Form -->
+        <div id="vehicleTabContent" class="tab-content">
+            <h2>Vehicle Manifest</h2>
+            <form id="vehicleForm">
+                <label for="vehicleName">Resource Name:</label>
+                <input type="text" id="vehicleName" name="name" required><br>
+
+                <label for="vehicleDescription">Description:</label>
+                <input type="text" id="vehicleDescription" name="description"><br>
+
+                <label for="vehicleVersion">Version:</label>
+                <input type="text" id="vehicleVersion" name="version"><br>
+
+                <label for="vehicleAuthor">Author:</label>
+                <input type="text" id="vehicleAuthor" name="author"><br>
+
+                <label for="vehicleFolder">Folder Name (if scripts are in a folder):</label>
+                <input type="text" id="vehicleFolder" name="folder"><br>
+
+                <label for="metaHandling">Handling Meta File:</label>
+                <input type="checkbox" id="metaHandling" name="metaHandling"><br>
+
+                <label for="metaVehicle">Vehicle Metadata File:</label>
+                <input type="checkbox" id="metaVehicle" name="metaVehicle"><br>
+
+                <label for="metaVariations">Vehicle Variations File:</label>
+                <input type="checkbox" id="metaVariations" name="metaVariations"><br>
+
+                <label for="metaCols">Carcols Meta File:</label>
+                <input type="checkbox" id="metaCols" name="metaCols"><br>
+
+                <button type="submit">Generate Vehicle Manifest</button>
+                <div id="vehicleErrorContainer" class="error-container"></div>
+            </form>
+        </div>
+
+        <h2>Generated Manifest:</h2>
+        <textarea id="manifestOutput" readonly></textarea>
+
+        <div id="downloadSection">
+            <button id="downloadLink" class="download-button">Download fxmanifest.lua</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
