@@ -32,6 +32,24 @@ ${dependencies.length > 0 ? `\ndependency '${dependencies.join(', ')}'` : ''}`;
 
     const manifestOutput = document.getElementById('manifestOutput');
     manifestOutput.value = manifest;
-    manifestOutput.style.height = 'auto'; // Adjust height to fit content
-    manifestOutput.style.height = `${manifestOutput.scrollHeight}px`; // Set height based on content
+    manifestOutput.style.height = 'auto';
+    manifestOutput.style.height = `${manifestOutput.scrollHeight}px`;
+
+    enableDownload(manifest);
+}
+
+function enableDownload(manifest) {
+    const existingLink = document.getElementById('downloadLink');
+    if (existingLink) {
+        existingLink.remove();
+    }
+
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(new Blob([manifest], { type: 'text/plain' }));
+    downloadLink.download = 'fxmanifest.lua';
+    downloadLink.textContent = 'Download fxmanifest.lua';
+    downloadLink.id = 'downloadLink';
+
+    const downloadSection = document.getElementById('downloadSection');
+    downloadSection.appendChild(downloadLink);
 }
