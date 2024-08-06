@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FXManifest Generator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #vehicleCreditsSection {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>FXManifest Generator</h1>
@@ -21,6 +26,9 @@
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" required><br>
 
+        <label for="folder">Folder Name (if scripts are in a folder):</label>
+        <input type="text" id="folder" name="folder"><br>
+
         <label for="clientScripts">Client Scripts (comma-separated):</label>
         <input type="text" id="clientScripts" name="clientScripts"><br>
 
@@ -29,6 +37,17 @@
 
         <label for="dependencies">Dependencies (comma-separated):</label>
         <input type="text" id="dependencies" name="dependencies"><br>
+
+        <label for="isMap">Is this a map resource?</label>
+        <input type="checkbox" id="isMap" name="isMap"><br>
+
+        <label for="isVehicle">Is this a vehicle resource?</label>
+        <input type="checkbox" id="isVehicle" name="isVehicle"><br>
+
+        <div id="vehicleCreditsSection">
+            <label for="vehicleCredits">Vehicle Credits:</label>
+            <input type="text" id="vehicleCredits" name="vehicleCredits"><br>
+        </div>
 
         <button type="submit">Generate Manifest</button>
     </form>
