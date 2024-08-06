@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FXManifest Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>FXManifest Generator</h1>
+    <form id="manifestForm">
+        <label for="name">Resource Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br>
+
+        <label for="version">Version:</label>
+        <input type="text" id="version" name="version" required><br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br>
+
+        <label for="clientScripts">Client Scripts (comma-separated):</label>
+        <input type="text" id="clientScripts" name="clientScripts"><br>
+
+        <label for="serverScripts">Server Scripts (comma-separated):</label>
+        <input type="text" id="serverScripts" name="serverScripts"><br>
+
+        <label for="dependencies">Dependencies (comma-separated):</label>
+        <input type="text" id="dependencies" name="dependencies"><br>
+
+        <button type="submit">Generate Manifest</button>
+    </form>
+
+    <h2>Generated Manifest:</h2>
+    <textarea id="manifestOutput" readonly></textarea>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
